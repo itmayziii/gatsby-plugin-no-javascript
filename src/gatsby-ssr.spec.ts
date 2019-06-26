@@ -84,7 +84,7 @@ describe('gatsby-ssr.js', () => {
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith(fakeBodyComponents)
     })
 
-    it('should remove special Gatsby scripts', () => {
+    it('should remove special Gatsby scripts from the body', () => {
       onRenderBody({ scripts: [] })
       function getHeadComponents () {
         return []
