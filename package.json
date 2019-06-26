@@ -4,7 +4,8 @@
   "main": "index.js",
   "description": "Removes all javascript files created by Gatsby from the static HTML files.",
   "scripts": {
-    "build": "npx tsc --project tsconfig.json"
+    "build": "npx tsc --project tsconfig.json",
+    "package": "npm run build && npx standard-version"
   },
   "repository": {
     "type": "git",
