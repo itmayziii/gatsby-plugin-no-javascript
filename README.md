@@ -51,7 +51,7 @@ Gatsby expects [certain files](https://www.gatsbyjs.org/docs/files-gatsby-looks-
 
 1. Get the latest updates `npm install`.
 2. Run `npm run watch` to tell typescript to listen to changes in the `src` directory and recompile on the fly.
-3. Link the package to an actual gatsby project to test the plugin working, there is a good article for this
+3. Link this package to an actual gatsby project to test the plugin working, there is a good article for this
 [here](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be).
 
 ## How to contribute
