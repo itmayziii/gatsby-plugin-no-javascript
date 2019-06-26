@@ -169,7 +169,7 @@ export const postBodyComponentsData = [
     type: 'script',
     key: 'google-auto-complete',
     ref: null,
-    props: { defer: true, src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZJcMmCmwtkCGJqLQMzy75fVwnwcFYt50&libraries=places' },
+    props: { defer: true, src: 'https://maps.googleapis.com/maps/api/js?key=&libraries=places' },
     _owner: null
   },
   {
