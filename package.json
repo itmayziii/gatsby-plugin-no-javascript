@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-no-javascript",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "index.js",
   "description": "Removes all javascript files created by Gatsby from the static HTML files.",
   "scripts": {
