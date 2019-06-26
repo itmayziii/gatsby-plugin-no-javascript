@@ -1,6 +1,6 @@
 ## Description
 
-Removes all javascript files created by Gatsby from the static HTML files. This
+Removes all javascript files created by Gatsby from the static HTML files.
 
 ## How to install
 
