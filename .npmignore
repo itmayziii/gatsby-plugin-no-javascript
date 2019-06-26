@@ -1,4 +1,7 @@
 !gatsby-ssr.js
+*.spec.js
 
 src/
 tsconfig.json
+tslint.json
+jasmine.json

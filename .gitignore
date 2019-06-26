@@ -4,4 +4,5 @@ node_modules/
 .idea/
 
 # Built Files #
-gatsby-ssr.js 
+gatsby-ssr.js
+*.spec.js
