@@ -34,7 +34,7 @@ export function onRenderBody ({ scripts }: OnRenderBodyArgs) {
 // Here we rely on the fact that onPreRenderHTML is called after onRenderBody so we have access to the scripts Gatsby inserted into the HTML.
 export function onPreRenderHTML ({ getHeadComponents, replaceHeadComponents, getPostBodyComponents, replacePostBodyComponents }: OnPreRenderHTMLArgs) {
   replaceHeadComponents(getHeadComponentsNoJS(getHeadComponents()))
-  replacePostBodyComponents(getPostBodyComponentsNoJS(getPostBodyComponents()))
+   replacePostBodyComponents(getPostBodyComponentsNoJS(getPostBodyComponents()))
 }
 
 function getHeadComponentsNoJS (headComponents: ReactNode[]): ReactNode[] {
@@ -69,5 +69,5 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[]): ReactNode[
 }
 
 function isReactElement (reactNode: ReactNode): reactNode is ReactElement {
-  return (<ReactElement>reactNode).props !== undefined
+  return (reactNode as ReactElement).props !== undefined
 }

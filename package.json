@@ -5,7 +5,10 @@
   "description": "Removes all javascript files created by Gatsby from the static HTML files.",
   "scripts": {
     "build": "npx tsc --project tsconfig.json",
-    "package": "npm run build && npx standard-version"
+    "package": "npm run build && npx standard-version",
+    "test": "npm run build && npx jasmine --config=jasmine.json",
+    "lint": "npx tslint --project tsconfig.json --config tslint.json",
+    "lint:fix": "npx tslint --fix --project tsconfig.json --config tslint.json"
   },
   "repository": {
     "type": "git",
@@ -28,7 +31,11 @@
   },
   "homepage": "https://github.com/itmayziii/gatsby-plugin-no-javascript#readme",
   "devDependencies": {
+    "@types/jasmine": "^3.3.13",
     "@types/react": "^16.8.22",
+    "jasmine": "^3.4.0",
+    "tslint": "^5.18.0",
+    "tslint-config-standard": "^8.0.1",
     "typescript": "^3.5.2"
   },
   "peerDependencies": {
