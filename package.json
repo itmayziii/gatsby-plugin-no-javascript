@@ -1,0 +1,36 @@
+{
+  "name": "gatsby-plugin-no-javascript",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "Removes all javascript files created by Gatsby from the static HTML files.",
+  "scripts": {
+    "build": "npx tsc --project tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itmayziii/gatsby-plugin-no-javascript.git"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby plugin",
+    "no javascript",
+    "remove",
+    "static"
+  ],
+  "author": "Tommy May III <tommymay37@gmail.com>",
+  "contributors": [
+    "Mandar Mathure <mandarm2593@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itmayziii/gatsby-plugin-no-javascript/issues"
+  },
+  "homepage": "https://github.com/itmayziii/gatsby-plugin-no-javascript#readme",
+  "devDependencies": {
+    "@types/react": "^16.8.22",
+    "typescript": "^3.5.2"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./",
+    "strict": true,
+    "target": "es5",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.spec.ts"
+  ]
+}

@@ -1,0 +1,7 @@
+node_modules/
+
+# IDE #
+.idea/
+
+# Built Files #
+gatsby-ssr.js 
