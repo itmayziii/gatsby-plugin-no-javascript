@@ -1,5 +1,4 @@
 import { onPreRenderHTML, onRenderBody } from './gatsby-ssr'
-
 import Spy = jasmine.Spy
 import { headComponentsData, postBodyComponentsData, scriptsData } from './fake-data.spec'
 
