@@ -1,22 +1,22 @@
 import { ReactElement, ReactNode } from 'react'
 
-interface OnRenderBodyArgs {
-  scripts?: Scripts[]
+export interface OnRenderBodyArgs {
+  scripts?: Script[]
 }
 
-interface OnPreRenderHTMLArgs {
+export interface OnPreRenderHTMLArgs {
   getHeadComponents (): ReactNode[]
   replaceHeadComponents (reactNodes: ReactNode[]): void
   getPostBodyComponents (): ReactNode[]
   replacePostBodyComponents (ReactNode: ReactNode[]): void
 }
 
-interface Scripts {
+export interface Script {
   name: string
   rel: string
 }
 
-let pageScripts: Scripts[]
+let pageScripts: Script[]
 
 /*
  * The "scripts" variable is not documented by Gatsby, https://www.gatsbyjs.org/docs/ssr-apis/#onRenderBody, and that is probably for a good reason. The variable contains
@@ -44,10 +44,15 @@ function getHeadComponentsNoJS (headComponents: ReactNode[]): ReactNode[] {
       return true
     }
 
+    // Gatsby puts JSON files in the head that should also be removed if javascript is removed, all these Gatsby files are in the "/static" directory.
+    if (headComponent.props.href && headComponent.props.href.startsWith('/static/')) {
+      return false
+    }
+
     return pageScripts.find((script) => {
-      const matchesScript = headComponent.props.as === 'script' && `/${script.name}` === headComponent.props.href && script.rel === headComponent.props.rel
-      const isJSONFile = headComponent.props.href && headComponent.props.href.endsWith('.json')
-      return matchesScript || isJSONFile
+      return headComponent.props.as === 'script'
+          && `/${script.name}` === headComponent.props.href
+          && script.rel === headComponent.props.rel
     }) === undefined
   })
 }
@@ -69,5 +74,5 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[]): ReactNode[
 }
 
 function isReactElement (reactNode: ReactNode): reactNode is ReactElement {
-  return (<ReactElement>reactNode).props !== undefined
+  return (reactNode as ReactElement).props !== undefined
 }
