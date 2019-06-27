@@ -5,3 +5,7 @@ src/
 tsconfig.json
 tslint.json
 jasmine.json
+cloudbuild.yaml
+.idea
+.github
+.nyc_output
