@@ -94,7 +94,7 @@ describe('gatsby-ssr.js', () => {
       }
 
       onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy })
-      expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[0]])
+      expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[3]])
     })
 
     it('should remove preload scripts from the body that are called out by Gatsby during onRenderBody', () => {
