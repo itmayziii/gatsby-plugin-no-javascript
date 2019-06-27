@@ -48,7 +48,7 @@ function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: Plug
       return true
     }
 
-    if (pluginOptions.exclude && RegExp(pluginOptions.exclude).test(headComponent.props.href)) {
+    if (pluginOptions.exclude && headComponent.props.href && RegExp(pluginOptions.exclude).test(headComponent.props.href)) {
       return true
     }
 
@@ -72,7 +72,7 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptio
       return true
     }
 
-    if (pluginOptions.exclude && RegExp(pluginOptions.exclude).test(postBodyComponent.props.src)) {
+    if (pluginOptions.exclude && postBodyComponent.props.src && RegExp(pluginOptions.exclude).test(postBodyComponent.props.src)) {
       return true
     }
 

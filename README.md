@@ -13,6 +13,12 @@ but rest knowing that this plugin is currently 100% unit tested. Go ahead and ru
 :warning: This plugin should be included last in your `gatsby-config.js` as it relies on [onPreRenderHTML](https://www.gatsbyjs.org/docs/ssr-apis/#onPreRenderHTML)
 `replaceHeadComponents` and `replacePostBodyComponents`. :warning:
 
+## Available options (if any)
+
+`exclude`: `string` - Will be used as a regular expression to test whether or not a Gatsby javascript file should be excluded by this plugin. The default behavior is that all Gatsby
+javascript files are removed by this plugin, so this option gives you a chance to "exclude them from being excluded :sweat_smile:". A use case for this option is to not remove the
+webpack-runtime.js file that Gatsby ships by default in case you have other javascript that relies on that runtime.
+
 ## When do I use this plugin?
 
 Use this plugin if you want to remove the javascript that comes out of the box with Gatsby. This is useful if your site is truly a static site with no interactivity or maybe the
