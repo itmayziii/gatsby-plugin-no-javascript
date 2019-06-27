@@ -7,9 +7,10 @@
     "build": "npx tsc --project tsconfig.json",
     "watch": "npx tsc --project tsconfig.json --watch",
     "package": "npm run build && npx standard-version",
-    "test": "npm run build && npx jasmine --config=jasmine.json",
+    "test": "npm run build && npx nyc jasmine --config=jasmine.json",
     "lint": "npx tslint --project tsconfig.json --config tslint.json",
-    "lint:fix": "npx tslint --fix --project tsconfig.json --config tslint.json"
+    "lint:fix": "npx tslint --fix --project tsconfig.json --config tslint.json",
+    "commit": "npx git-cz"
   },
   "repository": {
     "type": "git",
@@ -34,12 +35,21 @@
   "devDependencies": {
     "@types/jasmine": "^3.3.13",
     "@types/react": "^16.8.22",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
     "jasmine": "^3.4.0",
+    "nyc": "^14.1.1",
+    "standard-version": "^6.0.1",
     "tslint": "^5.18.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.5.2"
   },
   "peerDependencies": {
     "gatsby": "^2.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
