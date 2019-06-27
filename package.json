@@ -10,7 +10,8 @@
     "test": "npm run build && npx nyc jasmine --config=jasmine.json",
     "lint": "npx tslint --project tsconfig.json --config tslint.json",
     "lint:fix": "npx tslint --fix --project tsconfig.json --config tslint.json",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "cloud-build": "gcloud config set project gatsby-plugin-no-javascript && gcloud builds submit"
   },
   "repository": {
     "type": "git",
