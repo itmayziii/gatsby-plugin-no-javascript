@@ -19,10 +19,11 @@
   },
   "keywords": [
     "gatsby",
-    "gatsby plugin",
+    "gatsby-plugin",
     "no javascript",
     "remove",
-    "static"
+    "static",
+    "react"
   ],
   "author": "Tommy May III <tommymay37@gmail.com>",
   "contributors": [
