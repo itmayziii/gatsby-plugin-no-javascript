@@ -16,6 +16,10 @@ export interface Script {
   rel: string
 }
 
+export interface PluginOptions {
+  exclude?: RegExp | string
+}
+
 let pageScripts: Script[]
 
 /*
@@ -32,15 +36,19 @@ export function onRenderBody ({ scripts }: OnRenderBodyArgs) {
 }
 
 // Here we rely on the fact that onPreRenderHTML is called after onRenderBody so we have access to the scripts Gatsby inserted into the HTML.
-export function onPreRenderHTML ({ getHeadComponents, replaceHeadComponents, getPostBodyComponents, replacePostBodyComponents }: OnPreRenderHTMLArgs) {
-  replaceHeadComponents(getHeadComponentsNoJS(getHeadComponents()))
-  replacePostBodyComponents(getPostBodyComponentsNoJS(getPostBodyComponents()))
+export function onPreRenderHTML ({ getHeadComponents, replaceHeadComponents, getPostBodyComponents, replacePostBodyComponents }: OnPreRenderHTMLArgs, pluginOptions: PluginOptions) {
+  replaceHeadComponents(getHeadComponentsNoJS(getHeadComponents(), pluginOptions))
+  replacePostBodyComponents(getPostBodyComponentsNoJS(getPostBodyComponents(), pluginOptions))
 }
 
-function getHeadComponentsNoJS (headComponents: ReactNode[]): ReactNode[] {
+function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: PluginOptions): ReactNode[] {
   return headComponents.filter((headComponent) => {
     // Not a react component and therefore not a <script>.
     if (!isReactElement(headComponent)) {
+      return true
+    }
+
+    if (pluginOptions.exclude && RegExp(pluginOptions.exclude).test(headComponent.props.href)) {
       return true
     }
 
@@ -57,10 +65,14 @@ function getHeadComponentsNoJS (headComponents: ReactNode[]): ReactNode[] {
   })
 }
 
-function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[]): ReactNode[] {
+function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptions: PluginOptions): ReactNode[] {
   return postBodyComponents.filter((postBodyComponent) => {
     // Not a react component and therefore not a <script>.
     if (!isReactElement(postBodyComponent)) {
+      return true
+    }
+
+    if (pluginOptions.exclude && RegExp(pluginOptions.exclude).test(postBodyComponent.props.src)) {
       return true
     }
 

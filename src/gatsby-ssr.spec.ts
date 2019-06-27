@@ -26,8 +26,21 @@ describe('gatsby-ssr.js', () => {
         return []
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy })
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[2], headComponentsData[3]])
+    })
+
+    it('does not remove scripts in the head marked as excluded from plugin options', () => {
+      onRenderBody({ scripts: scriptsData })
+      function getHeadComponents () {
+        return [headComponentsData[13]]
+      }
+      function getPostBodyComponents () {
+        return []
+      }
+
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, { exclude: /webpack-runtime/ })
+      expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[13]])
     })
 
     it('should remove static files like JSON from the head as these files are always added by Gatsby', () => {
@@ -39,7 +52,7 @@ describe('gatsby-ssr.js', () => {
         return []
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy })
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[0], headComponentsData[1]])
     })
 
@@ -56,7 +69,7 @@ describe('gatsby-ssr.js', () => {
         return []
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy })
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replaceHeadComponentsSpy).toHaveBeenCalledTimes(1)
       expect(replaceHeadComponentsSpy.calls.argsFor(0)[0].length).toEqual(2)
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[0], headComponentsData[1]])
@@ -80,8 +93,21 @@ describe('gatsby-ssr.js', () => {
         return fakeBodyComponents
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy })
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith(fakeBodyComponents)
+    })
+
+    it('does not remove scripts in the body marked as excluded from plugin options', () => {
+      onRenderBody({ scripts: scriptsData })
+      function getHeadComponents () {
+        return []
+      }
+      function getPostBodyComponents () {
+        return [postBodyComponentsData[3]]
+      }
+
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, { exclude: /webpack-runtime/ })
+      expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[3]])
     })
 
     it('should remove special Gatsby scripts from the body', () => {
@@ -93,7 +119,7 @@ describe('gatsby-ssr.js', () => {
         return [postBodyComponentsData[0], postBodyComponentsData[1], postBodyComponentsData[2]]
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy })
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[0]])
     })
 
@@ -107,7 +133,7 @@ describe('gatsby-ssr.js', () => {
         return [postBodyComponentsData[0], postBodyComponentsData[3], postBodyComponentsData[4], postBodyComponentsData[5], postBodyComponentsData[6], postBodyComponentsData[7]]
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy })
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledTimes(1)
       expect(replacePostBodyComponentsSpy.calls.argsFor(0)[0].length).toEqual(1)
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[0]])

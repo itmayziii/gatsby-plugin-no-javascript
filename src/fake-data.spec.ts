@@ -10,7 +10,7 @@ export const scriptsData = [
 ]
 
 export const headComponentsData = [
-  {
+  { // 0
     type: 'style',
     key: null,
     ref: null,
@@ -21,21 +21,21 @@ export const headComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 1
     type: 'meta',
     key: 'generator-2.6.0',
     ref: null,
     props: { name: 'generator', content: 'Gatsby 2.6.0' },
     _owner: null
   },
-  [{
+  [{ // 2
     type: 'title',
     key: 'Your Pickup Request Has Been Received | Budget Dumpster ',
     ref: null,
     props: {},
     _owner: null
   }],
-  [{
+  [{ // 3
     type: 'link',
     key: '0',
     ref: null,
@@ -49,35 +49,35 @@ export const headComponentsData = [
       props: {},
       _owner: null
     }],
-  [{
+  [{ // 4
     type: 'meta',
     key: '0',
     ref: null,
     props: {},
     _owner: null
   }],
-  {
+  { // 5
     type: 'script',
     key: 'plugin-google-tagmanager',
     ref: null,
     props: { dangerouslySetInnerHTML: {} },
     _owner: null
   },
-  {
+  { // 6
     type: 'script',
     key: 'invoca',
     ref: null,
     props: { dangerouslySetInnerHTML: {} },
     _owner: null
   },
-  [{
+  [{ // 7
     type: 'title',
     key: '',
     ref: null,
     props: {},
     _owner: null
   }],
-  {
+  { // 8
     type: 'link',
     key: 'styles-fc78e7c610cb29615a01.js',
     ref: null,
@@ -89,7 +89,7 @@ export const headComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 9
     type: 'link',
     key: 'component---src-pages-schedule-a-pickup-php-js-a6d963769d2dc276611e.js',
     ref: null,
@@ -101,7 +101,7 @@ export const headComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 10
     type: 'link',
     key: '3-026f7b22973cd8a93202.js',
     ref: null,
@@ -113,7 +113,7 @@ export const headComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 11
     type: 'link',
     key: '1-aff5fb503cf05cb46096.js',
     ref: null,
@@ -125,7 +125,7 @@ export const headComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 12
     type: 'link',
     key: 'app-9df10a4ee487889eb94f.js',
     ref: null,
@@ -137,7 +137,7 @@ export const headComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 13
     type: 'link',
     key: 'webpack-runtime-d53148f285188e47861c.js',
     ref: null,
@@ -149,7 +149,7 @@ export const headComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 14
     type: 'link',
     key: '/static/d/991/path---schedule-a-pickup-thank-you-php-7-b-9-bc7-0SUcWyAf8ecbYDsMhQkEfPzV8.json',
     ref: null,
@@ -165,14 +165,14 @@ export const headComponentsData = [
 ]
 
 export const postBodyComponentsData = [
-  {
+  { // 0
     type: 'script',
     key: 'google-auto-complete',
     ref: null,
     props: { defer: true, src: 'https://maps.googleapis.com/maps/api/js?key=&libraries=places' },
     _owner: null
   },
-  {
+  { // 1
     type: 'script',
     key: 'script-loader',
     ref: null,
@@ -183,7 +183,7 @@ export const postBodyComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 2
     type: 'script',
     key: 'chunk-mapping',
     ref: null,
@@ -194,35 +194,35 @@ export const postBodyComponentsData = [
     },
     _owner: null
   },
-  {
+  { // 3
     type: 'script',
     key: '/webpack-runtime-d53148f285188e47861c.js',
     ref: null,
     props: { src: '/webpack-runtime-d53148f285188e47861c.js', async: true },
     _owner: null
   },
-  {
+  { // 4
     type: 'script',
     key: '/app-9df10a4ee487889eb94f.js',
     ref: null,
     props: { src: '/app-9df10a4ee487889eb94f.js', async: true },
     _owner: null
   },
-  {
+  { // 5
     type: 'script',
     key: '/1-aff5fb503cf05cb46096.js',
     ref: null,
     props: { src: '/1-aff5fb503cf05cb46096.js', async: true },
     _owner: null
   },
-  {
+  { // 6
     type: 'script',
     key: '/3-026f7b22973cd8a93202.js',
     ref: null,
     props: { src: '/3-026f7b22973cd8a93202.js', async: true },
     _owner: null
   },
-  {
+  { // 7
     type: 'script',
     key: '/component---src-pages-schedule-a-pickup-php-js-a6d963769d2dc276611e.js',
     ref: null,
