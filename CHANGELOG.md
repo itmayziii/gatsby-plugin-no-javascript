@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v1.1.0...v1.1.1) (2019-06-27)
+
+
+### Bug Fixes
+
+* **gatsby-ssr:** Added a check for href and src in props before regexp testing them. ([8eb6565](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/8eb6565))
+
+
+
 ## [1.1.0](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v1.0.2...v1.1.0) (2019-06-27)
 
 
