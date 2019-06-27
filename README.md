@@ -1,6 +1,7 @@
 ## Description
 
-Removes all javascript files created by Gatsby from the static HTML files.
+Removes all javascript files created by Gatsby from the static HTML files. A code coverage tool is not set up for this repository yet to add a nice badge for the percent covered,
+but rest knowing that this plugin is currently 100% unit tested. Go ahead and run `npm run test` to see the `instanbul` code coverage output.
 
 ## How to install
 
