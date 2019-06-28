@@ -1,17 +1,20 @@
 ## Description
 
 Removes all javascript files created by Gatsby from the static HTML files. This plugin is not meant to remove all javascript, but only the javascript that Gatsby is adding to the 
-page.
+page. 
  
 A code coverage tool is not set up for this repository yet to add a nice badge for the percent covered,
 but rest knowing that this plugin is currently 100% unit tested. Go ahead and run `npm run test` to see the `instanbul` code coverage output.
+
+:warning: The Gatsby javascript is only removed from the production build `gatsby build` and not during the dev build `gatsby develop`. If you do not write any state logic or event
+handlers then this should not effect you. This feature may be something this plugin wants to tackle in the future.
 
 ## How to install
 
 `npm install gatsby-plugin-no-javascript` or `yarn add gatsby-plugin-no-javascript`
 
 :warning: This plugin should be included last in your `gatsby-config.js` as it relies on [onPreRenderHTML](https://www.gatsbyjs.org/docs/ssr-apis/#onPreRenderHTML)
-`replaceHeadComponents` and `replacePostBodyComponents`. :warning:
+`replaceHeadComponents` and `replacePostBodyComponents`.
 
 ## Available options
 

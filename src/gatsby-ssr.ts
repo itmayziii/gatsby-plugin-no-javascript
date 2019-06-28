@@ -28,6 +28,9 @@ let pageScripts: Script[]
  * the head and post body. We will be relying on this undocumented variable until it does not work anymore as the alternative is to read the webpack.stats.json file and parse it ourselves.
  */
 export function onRenderBody ({ scripts }: OnRenderBodyArgs) {
+  if (process.env.NODE_ENV !== 'production') { // During a gatsby development build (gatsby develop) we do nothing.
+    return
+  }
   // TODO maybe we should not even wait and see if Gatsby removes this internal "script" variable and code around the issue if the variable is not there.
   if (!scripts) {
     throw new Error('gatsby-plugin-no-javascript: Gatsby removed an internal detail that this plugin relied upon, please submit this issue to https://www.github.com/itmayziii/gatsby-plugin-no-javascript.')
@@ -37,6 +40,9 @@ export function onRenderBody ({ scripts }: OnRenderBodyArgs) {
 
 // Here we rely on the fact that onPreRenderHTML is called after onRenderBody so we have access to the scripts Gatsby inserted into the HTML.
 export function onPreRenderHTML ({ getHeadComponents, replaceHeadComponents, getPostBodyComponents, replacePostBodyComponents }: OnPreRenderHTMLArgs, pluginOptions: PluginOptions) {
+  if (process.env.NODE_ENV !== 'production') { // During a gatsby development build (gatsby develop) we do nothing.
+    return
+  }
   replaceHeadComponents(getHeadComponentsNoJS(getHeadComponents(), pluginOptions))
   replacePostBodyComponents(getPostBodyComponentsNoJS(getPostBodyComponents(), pluginOptions))
 }

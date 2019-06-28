@@ -4,6 +4,10 @@ import { headComponentsData, postBodyComponentsData, scriptsData } from './fake-
 
 describe('gatsby-ssr.js', () => {
 
+  beforeEach(() => {
+    process.env.NODE_ENV = 'production' // Testing Gatsby production builds by default.
+  })
+
   describe('onRenderBody', () => {
     it('throws an error when no scripts are passed in', function () {
       expect(() => { onRenderBody({}) }).toThrow(new Error('gatsby-plugin-no-javascript: Gatsby removed an internal detail that this plugin relied upon, please submit this issue to https://www.github.com/itmayziii/gatsby-plugin-no-javascript.'))
@@ -39,7 +43,12 @@ describe('gatsby-ssr.js', () => {
         return []
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, { exclude: /webpack-runtime/ })
+      onPreRenderHTML({
+        getHeadComponents,
+        replaceHeadComponents: replaceHeadComponentsSpy,
+        getPostBodyComponents,
+        replacePostBodyComponents: replacePostBodyComponentsSpy
+      }, { exclude: /webpack-runtime/ })
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[13]])
     })
 
@@ -58,13 +67,13 @@ describe('gatsby-ssr.js', () => {
 
     it('should remove preload scripts from the head that are called out by Gatsby during onRenderBody', () => {
       onRenderBody({ scripts: scriptsData })
-
       function getHeadComponents () {
         return [
           headComponentsData[0], headComponentsData[1], headComponentsData[8], headComponentsData[9], headComponentsData[10], headComponentsData[11],
           headComponentsData[12], headComponentsData[13], headComponentsData[14]
         ]
       }
+
       function getPostBodyComponents () {
         return []
       }
@@ -86,9 +95,11 @@ describe('gatsby-ssr.js', () => {
           key: 'styles-module2.css'
         }
       ]
+
       function getHeadComponents () {
         return []
       }
+
       function getPostBodyComponents () {
         return fakeBodyComponents
       }
@@ -106,7 +117,12 @@ describe('gatsby-ssr.js', () => {
         return [postBodyComponentsData[3]]
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, { exclude: /webpack-runtime/ })
+      onPreRenderHTML({
+        getHeadComponents,
+        replaceHeadComponents: replaceHeadComponentsSpy,
+        getPostBodyComponents,
+        replacePostBodyComponents: replacePostBodyComponentsSpy
+      }, { exclude: /webpack-runtime/ })
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[3]])
     })
 
@@ -125,7 +141,6 @@ describe('gatsby-ssr.js', () => {
 
     it('should remove preload scripts from the body that are called out by Gatsby during onRenderBody', () => {
       onRenderBody({ scripts: scriptsData })
-
       function getHeadComponents () {
         return []
       }
@@ -137,6 +152,25 @@ describe('gatsby-ssr.js', () => {
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledTimes(1)
       expect(replacePostBodyComponentsSpy.calls.argsFor(0)[0].length).toEqual(1)
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[0]])
+    })
+
+    it('should not remove anything during a non production build', () => {
+      const oldEnv = process.env.NODE_ENV
+      process.env.NODE_ENV = 'development'
+      onRenderBody({})
+      function getHeadComponents () {
+        return headComponentsData
+      }
+      function getPostBodyComponents () {
+        return postBodyComponentsData
+      }
+
+      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+
+      expect(replaceHeadComponentsSpy).toHaveBeenCalledTimes(0)
+      expect(replacePostBodyComponentsSpy).toHaveBeenCalledTimes(0)
+
+      process.env.NODE_ENV = oldEnv
     })
   })
 })
