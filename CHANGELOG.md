@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v1.1.1...v1.1.2) (2019-06-28)
+
+
+### Bug Fixes
+
+* **gatsby-ssr:** Ignored all actions during dev build. ([2f9c265](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/2f9c265))
+
+
+### Tests
+
+* **instanbul source maps:** Added source maps for code coverage. ([9c11787](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/9c11787))
+
+
+
 ### [1.1.1](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v1.1.0...v1.1.1) (2019-06-27)
 
 
