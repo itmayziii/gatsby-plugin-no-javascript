@@ -6,6 +6,7 @@ node_modules/
 # Built Files #
 gatsby-ssr.js
 *.spec.js
+*.js.map
 
 # Test Coverage #
 .nyc_output/

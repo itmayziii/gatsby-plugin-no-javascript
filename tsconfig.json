@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "./",
     "strict": true,
+    "sourceMap": true,
     "target": "es5",
     "moduleResolution": "node",
     "rootDir": "src",

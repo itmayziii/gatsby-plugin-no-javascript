@@ -7,7 +7,7 @@
     "build": "npx tsc --project tsconfig.json",
     "watch": "npx tsc --project tsconfig.json --watch",
     "package": "npm run build && npx standard-version",
-    "test": "npm run build && npx nyc jasmine --config=jasmine.json",
+    "test": "npm run build && npx nyc --exclude-after-remap=false jasmine --config=jasmine.json",
     "lint": "npx tslint --project tsconfig.json --config tslint.json",
     "lint:fix": "npx tslint --fix --project tsconfig.json --config tslint.json",
     "commit": "npx git-cz",
