@@ -57,7 +57,7 @@ describe('gatsby-ssr.js', () => {
         replaceHeadComponents: replaceHeadComponentsSpy,
         getPostBodyComponents,
         replacePostBodyComponents: replacePostBodyComponentsSpy
-      }, { exclude: /webpack-runtime/ })
+      }, { excludeFiles: /webpack-runtime/ })
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[13]])
     })
 
@@ -137,7 +137,7 @@ describe('gatsby-ssr.js', () => {
         replaceHeadComponents: replaceHeadComponentsSpy,
         getPostBodyComponents,
         replacePostBodyComponents: replacePostBodyComponentsSpy
-      }, { exclude: /webpack-runtime/ })
+      }, { excludeFiles: /webpack-runtime/ })
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[3]])
     })
 

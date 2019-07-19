@@ -18,7 +18,7 @@ handlers then this should not effect you. This feature may be something this plu
 
 ## Available options
 
-`exclude`: `string (optional)`
+`excludeFiles`: `string (optional)`
 * Will be used as a regular expression to test whether or not a Gatsby javascript file should be excluded by this plugin. The default behavior is that all Gatsby javascript files 
 are removed by this plugin, so this option gives you a chance to "exclude them from being excluded :sweat_smile:".
 * A use case for this option is to not remove the webpack-runtime.js file that Gatsby ships by default in case you have other javascript that relies on that runtime.

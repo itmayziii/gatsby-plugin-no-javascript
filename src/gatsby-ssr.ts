@@ -18,7 +18,7 @@ export interface Script {
 }
 
 export interface PluginOptions {
-  exclude?: RegExp | string
+  excludeFiles?: RegExp | string
   excludePaths?: any[]
 }
 
@@ -61,7 +61,7 @@ function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: Plug
       return true
     }
 
-    if (pluginOptions.exclude && headComponent.props.href && RegExp(pluginOptions.exclude).test(headComponent.props.href)) {
+    if (pluginOptions.excludeFiles && headComponent.props.href && RegExp(pluginOptions.excludeFiles).test(headComponent.props.href)) {
       return true
     }
 
@@ -85,7 +85,7 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptio
       return true
     }
 
-    if (pluginOptions.exclude && postBodyComponent.props.src && RegExp(pluginOptions.exclude).test(postBodyComponent.props.src)) {
+    if (pluginOptions.excludeFiles && postBodyComponent.props.src && RegExp(pluginOptions.excludeFiles).test(postBodyComponent.props.src)) {
       return true
     }
 
