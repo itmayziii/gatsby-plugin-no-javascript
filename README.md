@@ -58,6 +58,9 @@ module.exports = {
 }
 ```
 
+## Upgrade Guide v1 -> v2
+* update the `exclude` pluginOption to `excludeFiles` in your gatsby-config file. The value passed in is exactly the same as it was before.
+
 ## How to run tests
 `npm run test`
 
