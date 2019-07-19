@@ -1,4 +1,4 @@
-import { onPreRenderHTML, onRenderBody } from './gatsby-ssr'
+import { onPreRenderHTML, onRenderBody, checkPathExclusion } from './gatsby-ssr'
 import Spy = jasmine.Spy
 import { headComponentsData, postBodyComponentsData, scriptsData } from './fake-data.spec'
 
@@ -15,8 +15,10 @@ describe('gatsby-ssr.js', () => {
   })
 
   describe('onPreRenderHTML', () => {
+    const pathname = '/my-cool-page'
     let replaceHeadComponentsSpy: Spy
     let replacePostBodyComponentsSpy: Spy
+
     beforeEach(() => {
       replaceHeadComponentsSpy = jasmine.createSpy<any>('replaceHeadComponents')
       replacePostBodyComponentsSpy = jasmine.createSpy<any>('replacePostBodyComponents')
@@ -30,8 +32,14 @@ describe('gatsby-ssr.js', () => {
         return []
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+      onPreRenderHTML({ getHeadComponents, pathname, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[2], headComponentsData[3]])
+    })
+
+    it('does the pathname match any of the exclusions', () => {
+      expect(checkPathExclusion('/client/nerds', { excludePaths: ['/client/', '/tacos'] })).toBeTruthy()
+      expect(checkPathExclusion('/about/blerns', { excludePaths: ['/client/', '/tacos'] })).toBeFalsy()
+      expect(checkPathExclusion('/blerkstorm', {})).toBeFalsy()
     })
 
     it('does not remove scripts in the head marked as excluded from plugin options', () => {
@@ -44,6 +52,7 @@ describe('gatsby-ssr.js', () => {
       }
 
       onPreRenderHTML({
+        pathname: '/my-cool-page',
         getHeadComponents,
         replaceHeadComponents: replaceHeadComponentsSpy,
         getPostBodyComponents,
@@ -53,6 +62,8 @@ describe('gatsby-ssr.js', () => {
     })
 
     it('should remove static files like JSON from the head as these files are always added by Gatsby', () => {
+      const pathname = '/my-cool-page'
+
       onRenderBody({ scripts: [] })
       function getHeadComponents () {
         return [headComponentsData[0], headComponentsData[1], headComponentsData[14]]
@@ -61,12 +72,14 @@ describe('gatsby-ssr.js', () => {
         return []
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+      onPreRenderHTML({ getHeadComponents, pathname, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[0], headComponentsData[1]])
     })
 
     it('should remove preload scripts from the head that are called out by Gatsby during onRenderBody', () => {
+      const pathname = '/my-cool-page'
       onRenderBody({ scripts: scriptsData })
+
       function getHeadComponents () {
         return [
           headComponentsData[0], headComponentsData[1], headComponentsData[8], headComponentsData[9], headComponentsData[10], headComponentsData[11],
@@ -78,13 +91,14 @@ describe('gatsby-ssr.js', () => {
         return []
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+      onPreRenderHTML({ getHeadComponents, pathname, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replaceHeadComponentsSpy).toHaveBeenCalledTimes(1)
       expect(replaceHeadComponentsSpy.calls.argsFor(0)[0].length).toEqual(2)
       expect(replaceHeadComponentsSpy).toHaveBeenCalledWith([headComponentsData[0], headComponentsData[1]])
     })
 
     it('does not remove non react components from the body, (checks for props)', function () {
+      const pathname = '/my-cool-page'
       const fakeBodyComponents = [
         {
           type: 'link',
@@ -104,7 +118,7 @@ describe('gatsby-ssr.js', () => {
         return fakeBodyComponents
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+      onPreRenderHTML({ getHeadComponents, pathname, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith(fakeBodyComponents)
     })
 
@@ -118,6 +132,7 @@ describe('gatsby-ssr.js', () => {
       }
 
       onPreRenderHTML({
+        pathname: '/my-cool-page',
         getHeadComponents,
         replaceHeadComponents: replaceHeadComponentsSpy,
         getPostBodyComponents,
@@ -127,6 +142,8 @@ describe('gatsby-ssr.js', () => {
     })
 
     it('should remove special Gatsby scripts from the body', () => {
+      const pathname = '/my-cool-page'
+
       onRenderBody({ scripts: [] })
       function getHeadComponents () {
         return []
@@ -135,11 +152,13 @@ describe('gatsby-ssr.js', () => {
         return [postBodyComponentsData[0], postBodyComponentsData[1], postBodyComponentsData[2]]
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+      onPreRenderHTML({ getHeadComponents, pathname, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[0]])
     })
 
     it('should remove preload scripts from the body that are called out by Gatsby during onRenderBody', () => {
+      const pathname = '/my-cool-page'
+
       onRenderBody({ scripts: scriptsData })
       function getHeadComponents () {
         return []
@@ -148,14 +167,16 @@ describe('gatsby-ssr.js', () => {
         return [postBodyComponentsData[0], postBodyComponentsData[3], postBodyComponentsData[4], postBodyComponentsData[5], postBodyComponentsData[6], postBodyComponentsData[7]]
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+      onPreRenderHTML({ getHeadComponents, pathname, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledTimes(1)
       expect(replacePostBodyComponentsSpy.calls.argsFor(0)[0].length).toEqual(1)
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledWith([postBodyComponentsData[0]])
     })
 
     it('should not remove anything during a non production build', () => {
+      const pathname = '/my-cool-page'
       const oldEnv = process.env.NODE_ENV
+
       process.env.NODE_ENV = 'development'
       onRenderBody({})
       function getHeadComponents () {
@@ -165,7 +186,7 @@ describe('gatsby-ssr.js', () => {
         return postBodyComponentsData
       }
 
-      onPreRenderHTML({ getHeadComponents, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
+      onPreRenderHTML({ getHeadComponents, pathname, replaceHeadComponents: replaceHeadComponentsSpy, getPostBodyComponents, replacePostBodyComponents: replacePostBodyComponentsSpy }, {})
 
       expect(replaceHeadComponentsSpy).toHaveBeenCalledTimes(0)
       expect(replacePostBodyComponentsSpy).toHaveBeenCalledTimes(0)
