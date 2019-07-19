@@ -19,7 +19,7 @@ export interface Script {
 
 export interface PluginOptions {
   excludeFiles?: RegExp | string
-  excludePaths?: any[]
+  excludePaths?: RegExp | string
 }
 
 let pageScripts: Script[]
@@ -50,8 +50,9 @@ export function onPreRenderHTML ({ getHeadComponents, pathname, replaceHeadCompo
 }
 
 export function checkPathExclusion (pathname: string, pluginOptions: PluginOptions): boolean {
-  const exclusion = pluginOptions.excludePaths || []
-  return exclusion.some(p => pathname.includes(p))
+  if (!pluginOptions.excludePaths) return false
+
+  return RegExp(pluginOptions.excludePaths).test(pathname)
 }
 
 function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: PluginOptions): ReactNode[] {

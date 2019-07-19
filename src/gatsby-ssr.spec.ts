@@ -37,8 +37,9 @@ describe('gatsby-ssr.js', () => {
     })
 
     it('does the pathname match any of the exclusions', () => {
-      expect(checkPathExclusion('/client/nerds', { excludePaths: ['/client/', '/tacos'] })).toBeTruthy()
-      expect(checkPathExclusion('/about/blerns', { excludePaths: ['/client/', '/tacos'] })).toBeFalsy()
+      expect(checkPathExclusion('/client/omegablerns', { excludePaths: /\/client/ })).toBeTruthy()
+      expect(checkPathExclusion('/about/blerns', { excludePaths: /(\/client)|(\/tacos)/ })).toBeFalsy()
+      expect(checkPathExclusion('/about/tacos', { excludePaths: /(\/client)|(\/about\/tacos)/ })).toBeTruthy()
       expect(checkPathExclusion('/blerkstorm', {})).toBeFalsy()
     })
 
