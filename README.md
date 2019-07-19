@@ -25,6 +25,9 @@ are removed by this plugin, so this option gives you a chance to "exclude them f
 * :warning: Make sure you enter a string 'a-string' instead of JS regexp like `/a-string/`, Gatsby has trouble handing off regular expressions to plugins. The string you pass in
 will be handled as a regular expression for you. 
 
+`excludePaths`: `string[] (optional)`
+* An array of paths that are to be excluded from removing all the JS. The code runs a "contains" so this can be used to block a directory and all subdirectories, or to get as specific as you want
+
 ## When do I use this plugin?
 
 Use this plugin if you want to remove the javascript that comes out of the box with Gatsby. This is useful if your site is truly a static site with no interactivity or maybe the
