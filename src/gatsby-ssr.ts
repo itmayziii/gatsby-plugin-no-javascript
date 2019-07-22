@@ -9,6 +9,7 @@ export interface OnPreRenderHTMLArgs {
   replaceHeadComponents (reactNodes: ReactNode[]): void
   getPostBodyComponents (): ReactNode[]
   replacePostBodyComponents (ReactNode: ReactNode[]): void
+  pathname: string
 }
 
 export interface Script {
@@ -17,7 +18,8 @@ export interface Script {
 }
 
 export interface PluginOptions {
-  exclude?: RegExp | string
+  excludeFiles?: RegExp | string
+  excludePaths?: RegExp | string
 }
 
 let pageScripts: Script[]
@@ -39,12 +41,18 @@ export function onRenderBody ({ scripts }: OnRenderBodyArgs) {
 }
 
 // Here we rely on the fact that onPreRenderHTML is called after onRenderBody so we have access to the scripts Gatsby inserted into the HTML.
-export function onPreRenderHTML ({ getHeadComponents, replaceHeadComponents, getPostBodyComponents, replacePostBodyComponents }: OnPreRenderHTMLArgs, pluginOptions: PluginOptions) {
-  if (process.env.NODE_ENV !== 'production') { // During a gatsby development build (gatsby develop) we do nothing.
+export function onPreRenderHTML ({ getHeadComponents, pathname, replaceHeadComponents, getPostBodyComponents, replacePostBodyComponents }: OnPreRenderHTMLArgs, pluginOptions: PluginOptions) {
+  if (process.env.NODE_ENV !== 'production' || checkPathExclusion(pathname, pluginOptions)) { // During a gatsby development build (gatsby develop) we do nothing.
     return
   }
   replaceHeadComponents(getHeadComponentsNoJS(getHeadComponents(), pluginOptions))
   replacePostBodyComponents(getPostBodyComponentsNoJS(getPostBodyComponents(), pluginOptions))
+}
+
+export function checkPathExclusion (pathname: string, pluginOptions: PluginOptions): boolean {
+  if (!pluginOptions.excludePaths) return false
+
+  return RegExp(pluginOptions.excludePaths).test(pathname)
 }
 
 function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: PluginOptions): ReactNode[] {
@@ -54,7 +62,7 @@ function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: Plug
       return true
     }
 
-    if (pluginOptions.exclude && headComponent.props.href && RegExp(pluginOptions.exclude).test(headComponent.props.href)) {
+    if (pluginOptions.excludeFiles && headComponent.props.href && RegExp(pluginOptions.excludeFiles).test(headComponent.props.href)) {
       return true
     }
 
@@ -78,7 +86,7 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptio
       return true
     }
 
-    if (pluginOptions.exclude && postBodyComponent.props.src && RegExp(pluginOptions.exclude).test(postBodyComponent.props.src)) {
+    if (pluginOptions.excludeFiles && postBodyComponent.props.src && RegExp(pluginOptions.excludeFiles).test(postBodyComponent.props.src)) {
       return true
     }
 
