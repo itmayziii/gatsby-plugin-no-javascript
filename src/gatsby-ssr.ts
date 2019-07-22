@@ -1,4 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
+import { checkPathExclusion } from './utilities'
 
 export interface OnRenderBodyArgs {
   scripts?: Script[]
@@ -47,12 +48,6 @@ export function onPreRenderHTML ({ getHeadComponents, pathname, replaceHeadCompo
   }
   replaceHeadComponents(getHeadComponentsNoJS(getHeadComponents(), pluginOptions))
   replacePostBodyComponents(getPostBodyComponentsNoJS(getPostBodyComponents(), pluginOptions))
-}
-
-export function checkPathExclusion (pathname: string, pluginOptions: PluginOptions): boolean {
-  if (!pluginOptions.excludePaths) return false
-
-  return RegExp(pluginOptions.excludePaths).test(pathname)
 }
 
 function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: PluginOptions): ReactNode[] {

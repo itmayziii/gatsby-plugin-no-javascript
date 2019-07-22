@@ -5,6 +5,7 @@ node_modules/
 
 # Built Files #
 gatsby-ssr.js
+utilities.js
 *.spec.js
 *.js.map
 
