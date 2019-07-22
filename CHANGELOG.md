@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v1.1.2...v2.0.0) (2019-07-22)
+
+
+### Features
+
+* **gatsby-ssr:** add excludePaths option ([2719468](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/2719468))
+* **gatsby-ssr:** update checkpathexclusion to use RegExp instead of an array of strings ([3dc084a](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/3dc084a))
+* **gatsby-ssr:** update exclude to excludeFiles ([057bc58](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/057bc58))
+
+
+### Tests
+
+* **gatsby-ssr.spec.ts:** update some tests ([703d72d](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/703d72d))
+
+
+### BREAKING CHANGES
+
+* **gatsby-ssr:** the option of exclude has been changed to excludeFiles. Anything using exclude
+still will not have stuff excluded
+
+
+
 ### [1.1.2](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v1.1.1...v1.1.2) (2019-06-28)
 
 
