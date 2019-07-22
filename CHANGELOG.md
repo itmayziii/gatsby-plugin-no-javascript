@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.1...v2.0.2) (2019-07-22)
+
+
+### Bug Fixes
+
+* **gatsby-ssr:** can't export a function unless it's in the API, so to utilities checkPathExclusion ([d38981e](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/d38981e))
+
+
+### Build System
+
+* **gitignore:** remove a compiled file and add it to gitignore ([b0a93c3](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/b0a93c3))
+
+
+
 ### [2.0.1](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.0...v2.0.1) (2019-07-22)
 
 
