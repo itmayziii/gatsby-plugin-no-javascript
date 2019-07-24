@@ -11,7 +11,7 @@
     "lint": "npx tslint --project tsconfig.json --config tslint.json",
     "lint:fix": "npx tslint --fix --project tsconfig.json --config tslint.json",
     "commit": "npx git-cz",
-    "cloud-build": "gcloud config set project gatsby-plugin-no-javascript && gcloud builds submit"
+    "cloud-build": "gcloud cofig set project gatsby-plugin-no-javascript && gcloud builds submit"
   },
   "repository": {
     "type": "git",
