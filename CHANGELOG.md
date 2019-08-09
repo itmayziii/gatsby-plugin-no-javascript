@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.4](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.3...v2.0.4) (2019-08-09)
+
+
+### Bug Fixes
+
+* **npm files:** added back missing files from switching from npmignore to package.json files prop ([ea713ee](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/ea713ee))
+
+
+
 ### [2.0.3](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.2...v2.0.3) (2019-08-09)
 
 
