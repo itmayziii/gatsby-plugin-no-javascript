@@ -35,11 +35,6 @@ tackle in the future.
 * `excludePaths`: `string (optional)`
     * An array of paths that are to be excluded from removing all the JS. The code runs a "contains" so this can be used to block a
       directory and all subdirectories, or to get as specific as you want.
-      
-* `removeNoScript`: `boolean (optional) (default = false)`
-    * Determines whether or not the `<noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript>` should be removed.
-      The default behavior is to not remove it since the majority of sites will probably have at least some javascript on the page that did
-      not come from Gatsby i.e. Google Analytics etc...
 
 ## When do I use this plugin?
 
