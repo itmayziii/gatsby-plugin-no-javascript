@@ -42,13 +42,13 @@ export const headComponentsData = [
     props: {},
     _owner: null
   },
-    {
-      type: 'link',
-      key: '1',
-      ref: null,
-      props: {},
-      _owner: null
-    }],
+  {
+    type: 'link',
+    key: '1',
+    ref: null,
+    props: {},
+    _owner: null
+  }],
   [{ // 4
     type: 'meta',
     key: '0',
