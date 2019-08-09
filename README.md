@@ -1,13 +1,18 @@
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## Description
 
-Removes all javascript files created by Gatsby from the static HTML files. This plugin is not meant to remove all javascript, but only the javascript that Gatsby is adding to the 
-page. 
+Removes all javascript files created by Gatsby from the static HTML files. This plugin is not meant to remove all javascript, but only the
+javascript that Gatsby is adding to the page. 
  
 A code coverage tool is not set up for this repository yet to add a nice badge for the percent covered,
 but rest knowing that this plugin is currently 100% unit tested. Go ahead and run `npm run test` to see the `instanbul` code coverage output.
+We also test against the [minimum supported node version of Gatsby](https://www.gatsbyjs.org/tutorial/part-zero/#-install-nodejs-and-npm) up
+to the latest version during each pull request to make sure the code will work for all supported NodeJS versions.
 
-:warning: The Gatsby javascript is only removed from the production build `gatsby build` and not during the dev build `gatsby develop`. If you do not write any state logic or event
-handlers then this should not effect you. This feature may be something this plugin wants to tackle in the future.
+:warning: The Gatsby javascript is only removed from the production build `gatsby build` and not during the dev build `gatsby develop`.
+If you do not write any state logic or event handlers then this should not effect you. This feature may be something this plugin wants to
+tackle in the future.
 
 ## How to install
 
@@ -18,20 +23,23 @@ handlers then this should not effect you. This feature may be something this plu
 
 ## Available options
 
-`excludeFiles`: `string (optional)`
-* Will be used as a regular expression to test whether or not a Gatsby javascript file should be excluded by this plugin. The default behavior is that all Gatsby javascript files 
-are removed by this plugin, so this option gives you a chance to "exclude them from being excluded :sweat_smile:".
-* A use case for this option is to not remove the webpack-runtime.js file that Gatsby ships by default in case you have other javascript that relies on that runtime.
-* :warning: Make sure you enter a string 'a-string' instead of JS regexp like `/a-string/`, Gatsby has trouble handing off regular expressions to plugins. The string you pass in
-will be handled as a regular expression for you. 
+* `excludeFiles`: `string (optional)`
+    * Will be used as a regular expression to test whether or not a Gatsby javascript file should be excluded by this plugin. The default
+      behavior is that all Gatsby javascript files are removed by this plugin, so this option gives you a chance to "exclude them from being
+      excluded :sweat_smile:".
+    * A use case for this option is to not remove the webpack-runtime.js file that Gatsby ships by default in case you have other javascript
+      that relies on that runtime.
+    * :warning: Make sure you enter a string 'a-string' instead of JS regexp like `/a-string/`, Gatsby has trouble handing off regular
+      expressions to plugins. The string you pass in will be handled as a regular expression for you. 
 
-`excludePaths`: `string (optional)`
-* An array of paths that are to be excluded from removing all the JS. The code runs a "contains" so this can be used to block a directory and all subdirectories, or to get as specific as you want
+* `excludePaths`: `string (optional)`
+    * An array of paths that are to be excluded from removing all the JS. The code runs a "contains" so this can be used to block a
+      directory and all subdirectories, or to get as specific as you want.
 
 ## When do I use this plugin?
 
-Use this plugin if you want to remove the javascript that comes out of the box with Gatsby. This is useful if your site is truly a static site with no interactivity or maybe the
-interactivity is handled by different javascript than your React components.
+Use this plugin if you want to remove the javascript that comes out of the box with Gatsby. This is useful if your site is truly a static
+site with no interactivity or maybe the interactivity is handled by different javascript than your React components.
 
 ## Examples of usage
 
@@ -59,15 +67,16 @@ module.exports = {
 ```
 
 ## Upgrade Guide v1 -> v2
-* update the `exclude` pluginOption to `excludeFiles` in your gatsby-config file. The value passed in is exactly the same as it was before.
+* Update the `exclude` pluginOption to `excludeFiles` in your gatsby-config file. The value passed in is exactly the same as it was before.
 
 ## How to run tests
 `npm run test`
 
 ## How to develop locally
 
-This project relies on typescript for all the type safety goodness which can be found in the `src` directory. The compiled output goes directly into the root of the project because
-Gatsby expects [certain files](https://www.gatsbyjs.org/docs/files-gatsby-looks-for-in-a-plugin/) to be in the root.
+This project relies on typescript for all the type safety goodness which can be found in the `src` directory. The compiled output goes
+directly into the root of the project because Gatsby expects [certain files](https://www.gatsbyjs.org/docs/files-gatsby-looks-for-in-a-plugin/)
+to be in the root.
 
 ### Dev workflow
 
@@ -80,9 +89,10 @@ Gatsby expects [certain files](https://www.gatsbyjs.org/docs/files-gatsby-looks-
 
 * Please open an issue first so that it can be determined that the feature / issue needs to be implemented / fixed.
 * If it is determined that the feature / issue is something this plugin should address then feel free to fork the repo and make a pull request.
-* This project makes use of [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) and your commits should follow this standard. In order to make following
-this convention easy this project uses an NPM package called [commitizen](https://www.npmjs.com/package/commitizen). Now this isn't just an arbitrary spec that this package is
-forcing on you, as it turns out when you have standards around things you can build automation on top of it very easily. In the case of these standardized commit messages when this
-package releases a new version it auto generates a changelog / version bump based on the commit messages. In order to easily commit just run `npm run commit` and you will guided
+* This project makes use of [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) and your commits should follow
+this standard. In order to make following this convention easy this project uses an NPM package called [commitizen](https://www.npmjs.com/package/commitizen).
+Now this isn't just an arbitrary spec that this package is forcing on you, as it turns out when you have standards around things you can
+build automation on top of it very easily. In the case of these standardized commit messages when this package releases a new version it
+auto generates a changelog / version bump based on the commit messages. In order to easily commit just run `npm run commit` and you will guided 
 through a series of questions which will auto format the commit message for you.
 * Before making a pull request please make sure the tests are passing `npm run test` and the linter is happy `npm run lint`.
