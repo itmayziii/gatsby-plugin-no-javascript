@@ -18,7 +18,9 @@
     "url": "git+https://github.com/itmayziii/gatsby-plugin-no-javascript.git"
   },
   "files": [
-    "gatsby-ssr.js"
+    "gatsby-ssr.js",
+    "utilities.js",
+    "index.js"
   ],
   "keywords": [
     "gatsby",
