@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.2...v2.0.3) (2019-08-09)
+
+
+### Build System
+
+* **cz-conventional-changelog:** upgraded conventional changelog dependency to fix a security bug ([7b18157](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/7b18157))
+
+
+
 ### [2.0.2](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.1...v2.0.2) (2019-07-22)
 
 
