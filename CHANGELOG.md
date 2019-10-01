@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.4...v2.0.5) (2019-10-01)
+
+
+### Bug Fixes
+
+* **gatsby-ssr:** filtering out links that begin with the /page-data/ directory ([7b7f5a4](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/7b7f5a4))
+
+
+### Build System
+
+* **package.json:** upgraded dev-dependencies and made them only respect minor versions ([96c3001](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/96c3001))
+
+
+### Tests
+
+* **gatsby-ssr spec:** added a test for /page-data/ JSON files being removed ([f3faf88](https://github.com/itmayziii/gatsby-plugin-no-javascript/commit/f3faf88))
+
+
+
 ### [2.0.4](https://github.com/itmayziii/gatsby-plugin-no-javascript/compare/v2.0.3...v2.0.4) (2019-08-09)
 
 
