@@ -60,7 +60,7 @@ describe('gatsby-ssr.js', (): void => {
 
       onRenderBody({ scripts: [] })
       function getHeadComponents (): ReactNode[] {
-        return [headComponentsData[0], headComponentsData[1], headComponentsData[14]]
+        return [headComponentsData[0], headComponentsData[1], headComponentsData[14], headComponentsData[15]]
       }
       function getPostBodyComponents (): ReactNode[] {
         return []
