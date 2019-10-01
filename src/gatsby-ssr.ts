@@ -65,8 +65,9 @@ function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: Plug
       return true
     }
 
-    // Gatsby puts JSON files in the head that should also be removed if javascript is removed, all these Gatsby files are in the "/static" directory.
-    if (headComponent.props.href && headComponent.props.href.startsWith('/static/')) {
+    // Gatsby puts JSON files in the head that should also be removed if javascript is removed, all these Gatsby files are in the
+    // "/static" or /page-data directories.
+    if (headComponent.props.href && (headComponent.props.href.startsWith('/static/') || headComponent.props.href.startsWith('/page-data/'))) {
       return false
     }
 
