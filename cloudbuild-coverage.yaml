@@ -1,0 +1,24 @@
+steps:
+  - name: node:12
+    args: ['npm', 'ci']
+
+  - name: node:12
+    args: ['npm', 'run', 'test']
+
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: '/bin/bash'
+    args: [
+      '<(curl -s https://codecov.io/bash)',
+      '-t',
+      '$(gcloud secrets versions access latest --secret codecov-token)',
+      '-F',
+      'unittests',
+      '-B',
+      '$BRANCH_NAME',
+      '-C',
+      '-$COMMIT_SHA',
+      'P',
+      '_PR_NUMBER',
+      '-b',
+      '$BUILD_ID'
+    ]

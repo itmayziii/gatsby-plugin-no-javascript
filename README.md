@@ -89,4 +89,4 @@ to be in the root.
 See the [contributing docs](CONTRIBUTING.md)
 
 ### Code of conduct
-Our code of conduct can be found [here](CODE_OF_CONDUCT.md)
+See the [code of conduct](CODE_OF_CONDUCT.md)
