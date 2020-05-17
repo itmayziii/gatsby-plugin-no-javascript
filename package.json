@@ -46,7 +46,7 @@
     "@types/react": "~16.9.4",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "~1.13.0",
-    "commitizen": "~4.0.3",
+    "commitizen": "~4.1.2",
     "cz-conventional-changelog": "~3.0.2",
     "eslint": "~6.5.1",
     "eslint-config-standard": "~13.0.1",
