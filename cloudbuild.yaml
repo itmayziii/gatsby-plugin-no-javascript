@@ -1,21 +1,17 @@
 steps:
-  - name: node:10
+  - name: node:12
     args: ['npm', 'ci']
 
-  - name: node:10
+  - name: node:12
     args: ['npm', 'run', 'lint']
 
-  - name: node:8 # Gatsby's minimum supported NodeJS version https://www.gatsbyjs.org/tutorial/part-zero/#-install-nodejs-and-npm
-    args: ['npm', 'run', 'test']
-
-  - name: node:9
-    args: ['npm', 'run', 'test']
-
-  - name: node:10 # Current LTS Version
-    args: ['npm', 'run', 'test']
-
-  - name: node:11
+  # Attempting to test against all "Current", "Active", and "Maintenance" versions of Node supported by Gatsby.
+  # https://www.gatsbyjs.org/docs/upgrading-node-js/#gatsbys-nodejs-support-policy
+  - name: node:10
     args: ['npm', 'run', 'test']
 
   - name: node:12
+    args: ['npm', 'run', 'test']
+
+  - name: node:14
     args: ['npm', 'run', 'test']
