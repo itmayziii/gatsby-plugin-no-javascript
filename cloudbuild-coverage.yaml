@@ -9,5 +9,5 @@ steps:
     entrypoint: '/bin/bash'
     args: [
       '-c',
-      'bash <(curl -s https://codecov.io/bash) -t $(gcloud secrets versions access latest --secret codecov-token) -f coverage/lcov.info -F unittests -B $BRANCH_NAME -C -$COMMIT_SHA -b $BUILD_ID'
+      'bash <(curl -s https://codecov.io/bash) -t $(gcloud secrets versions access latest --secret codecov-token) -f coverage/lcov.info -F unittests -B $BRANCH_NAME -C $COMMIT_SHA -b $BUILD_ID -v'
     ]
