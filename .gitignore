@@ -9,5 +9,6 @@ utilities.js
 *.spec.js
 *.js.map
 
-# Test Coverage #
+# Test Output #
 .nyc_output/
+coverage/

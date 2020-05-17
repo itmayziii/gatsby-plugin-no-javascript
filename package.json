@@ -6,12 +6,13 @@
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "watch": "tsc --project tsconfig.json --watch",
-    "package": "npm run lint && npm run build && standard-version",
-    "test": "npm run build && nyc --exclude-after-remap false --exclude=\"**/*.spec.js\" jasmine --config=jasmine.json",
+    "prepackage": "npm run lint && npm run test && npm run build",
+    "package": "standard-version",
+    "pretest": "npm run build",
+    "test": "nyc jasmine --config=jasmine.json",
     "lint": "eslint --config .eslintrc.json --ext .js,.ts ./src",
     "lint:fix": "eslint --fix --config .eslintrc.json --ext .js,.ts ./src",
-    "commit": "git-cz",
-    "cloud-build": "gcloud config set project gatsby-plugin-no-javascript && gcloud builds submit"
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -69,5 +70,15 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "nyc": {
+    "exclude": ["**/*.spec.js"],
+    "exclude-after-remap": false,
+    "reporter": ["lcov", "text"],
+    "check-coverage": true,
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
   }
 }
