@@ -1,14 +1,9 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-## Description
+# gatsby-plugin-no-javascript
 
-Removes all javascript files created by Gatsby from the static HTML files. This plugin is not meant to remove all javascript, but only the
-javascript that Gatsby is adding to the page. 
- 
-A code coverage tool is not set up for this repository yet to add a nice badge for the percent covered,
-but rest knowing that this plugin is currently 100% unit tested. Go ahead and run `npm run test` to see the `instanbul` code coverage output.
-We also test against the [minimum supported node version of Gatsby](https://www.gatsbyjs.org/tutorial/part-zero/#-install-nodejs-and-npm) up
-to the latest version during each pull request to make sure the code will work for all supported NodeJS versions.
+Removes all javascript files created by Gatsby from the static HTML files. This plugin does **NOT** remove all javascript, but only the
+javascript that Gatsby is adding to the page.
 
 :warning: The Gatsby javascript is only removed from the production build `gatsby build` and not during the dev build `gatsby develop`.
 If you do not write any state logic or event handlers then this should not effect you. This feature may be something this plugin wants to
@@ -72,27 +67,32 @@ module.exports = {
 ## How to run tests
 `npm run test`
 
+### Node versions
+We also test against the [minimum supported Node version of Gatsby](https://www.gatsbyjs.org/docs/upgrading-node-js/#gatsbys-nodejs-support-policy) up
+to the latest version during each pull request to make sure the code will work for all supported NodeJS versions. You can find this configuration in the 
+[Cloud Build config file](cloudbuild.yaml).
+
 ## How to develop locally
 
-This project relies on typescript for all the type safety goodness which can be found in the `src` directory. The compiled output goes
+This project relies on Typescript for all the type safety goodness which can be found in the `src` directory. The compiled output goes
 directly into the root of the project because Gatsby expects [certain files](https://www.gatsbyjs.org/docs/files-gatsby-looks-for-in-a-plugin/)
 to be in the root.
 
 ### Dev workflow
 
 1. Get the latest updates `npm install`.
-2. Run `npm run watch` to tell typescript to listen to changes in the `src` directory and recompile on the fly.
+2. Run `npm run watch` to tell Typescript to listen to changes in the `src` directory and recompile on the fly.
 3. Link this package to an actual gatsby project to test the plugin working, there is a good article for this
 [here](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be).
 
 ## How to contribute
 
 * Please open an issue first so that it can be determined that the feature / issue needs to be implemented / fixed.
-* If it is determined that the feature / issue is something this plugin should address then feel free to fork the repo and make a pull request.
-* This project makes use of [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) and your commits should follow
+* If we determine the feature / issue is something this plugin should address then feel free to fork the repo and make a pull request.
+* This project makes use of [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and your commits should follow
 this standard. In order to make following this convention easy this project uses an NPM package called [commitizen](https://www.npmjs.com/package/commitizen).
-Now this isn't just an arbitrary spec that this package is forcing on you, as it turns out when you have standards around things you can
+Now this isn't just an arbitrary spec this package is forcing on you, as it turns out when you have standards around things you can
 build automation on top of it very easily. In the case of these standardized commit messages when this package releases a new version it
-auto generates a changelog / version bump based on the commit messages. In order to easily commit just run `npm run commit` and you will guided 
-through a series of questions which will auto format the commit message for you.
+auto-generate a changelog / version bump based on the commit messages. In order to easily commit just run `npm run commit` and you will be guided 
+through a series of questions which will auto-format the commit message for you.
 * Before making a pull request please make sure the tests are passing `npm run test` and the linter is happy `npm run lint`.
