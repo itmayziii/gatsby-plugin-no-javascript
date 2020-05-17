@@ -20,8 +20,8 @@ describe('gatsby-ssr.js', (): void => {
     let replacePostBodyComponentsSpy: Spy
 
     beforeEach((): void => {
-      replaceHeadComponentsSpy = jasmine.createSpy<any>('replaceHeadComponents')
-      replacePostBodyComponentsSpy = jasmine.createSpy<any>('replacePostBodyComponents')
+      replaceHeadComponentsSpy = jasmine.createSpy('replaceHeadComponents')
+      replacePostBodyComponentsSpy = jasmine.createSpy('replacePostBodyComponents')
     })
 
     it('does not remove non react components from the head, (checks for props)', function (): void {

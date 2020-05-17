@@ -57,7 +57,7 @@
     "jasmine": "~3.5.0",
     "nyc": "~14.1.1",
     "standard-version": "~8.0.0",
-    "typescript": "~3.6.3"
+    "typescript": "~3.9.2"
   },
   "dependencies": {
     "@types/react": "~16.9.4"
