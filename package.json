@@ -8,8 +8,8 @@
     "watch": "npx tsc --project tsconfig.json --watch",
     "package": "npm run lint && npm run build && npx standard-version",
     "test": "npm run build && npx nyc --exclude-after-remap false --exclude=\"**/*.spec.js\" jasmine --config=jasmine.json",
-    "lint": "npx eslint --config .eslintrc.js --ext .js,.ts ./src",
-    "lint:fix": "npx eslint --fix --config .eslintrc.js --ext .js,.ts ./src",
+    "lint": "npx eslint --config .eslintrc.json --ext .js,.ts ./src",
+    "lint:fix": "npx eslint --fix --config .eslintrc.json --ext .js,.ts ./src",
     "commit": "npx git-cz",
     "cloud-build": "gcloud config set project gatsby-plugin-no-javascript && gcloud builds submit"
   },
@@ -43,23 +43,24 @@
   "devDependencies": {
     "@types/jasmine": "~3.4.1",
     "@types/node": "~10.14.19",
-    "@types/react": "~16.9.4",
-    "@typescript-eslint/eslint-plugin": "~1.13.0",
-    "@typescript-eslint/parser": "~1.13.0",
+    "@typescript-eslint/eslint-plugin": "~2.33.0",
+    "@typescript-eslint/parser": "~2.33.0",
     "commitizen": "~4.1.2",
     "cz-conventional-changelog": "~3.0.2",
-    "eslint": "~6.5.1",
+    "eslint": "~6.8.0",
     "eslint-config-standard": "~13.0.1",
-    "eslint-plugin-import": "~2.18.2",
-    "eslint-plugin-node": "~9.2.0",
+    "eslint-plugin-import": "~2.20.2",
+    "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-promise": "~4.2.1",
     "eslint-plugin-standard": "~4.0.1",
+    "eslint-plugin-standard-typescript": "~1.0.1",
     "jasmine": "~3.5.0",
     "nyc": "~14.1.1",
     "standard-version": "~6.0.1",
-    "tslint": "~5.20.0",
-    "tslint-config-standard": "~8.0.1",
     "typescript": "~3.6.3"
+  },
+  "dependencies": {
+    "@types/react": "~16.9.4"
   },
   "peerDependencies": {
     "gatsby": "^2.0.0"
