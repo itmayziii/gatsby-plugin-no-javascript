@@ -1,17 +1,26 @@
 steps:
   - name: node:12
     args: ['npm', 'ci']
+    id: install
 
   - name: node:12
     args: ['npm', 'run', 'lint']
+    waitFor:
+      - install
 
   # Attempting to test against all "Current", "Active", and "Maintenance" versions of Node supported by Gatsby.
   # https://www.gatsbyjs.org/docs/upgrading-node-js/#gatsbys-nodejs-support-policy
   - name: node:10
     args: ['npm', 'run', 'test']
+    waitFor:
+      - install
 
   - name: node:12
     args: ['npm', 'run', 'test']
+    waitFor:
+      - install
 
   - name: node:14
     args: ['npm', 'run', 'test']
+    waitFor:
+      - install
