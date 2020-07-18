@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
-import { checkPathExclusion } from './utilities'
+import { checkPathExclusion, isChildOfDirectory } from './utilities'
 
 export interface OnRenderBodyArgs {
   scripts?: Script[]
@@ -66,8 +66,8 @@ function getHeadComponentsNoJS (headComponents: ReactNode[], pluginOptions: Plug
     }
 
     // Gatsby puts JSON files in the head that should also be removed if javascript is removed, all these Gatsby files are in the
-    // "/static" or /page-data directories.
-    if (headComponent.props.href && (headComponent.props.href.startsWith('/static/') || headComponent.props.href.endsWith('page-data.json'))) {
+    // "/static" or "/page-data" directories.
+    if (headComponent.props.href && (isChildOfDirectory('/static', headComponent.props.href) || isChildOfDirectory('/page-data', headComponent.props.href))) {
       return false
     }
 
