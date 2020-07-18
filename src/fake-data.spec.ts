@@ -174,6 +174,32 @@ export const headComponentsData = [
       crossOrigin: 'use-credentials'
     },
     _owner: null
+  },
+  { // 16
+    type: 'link',
+    key: '/page-data\\index\\page-data.json',
+    ref: null,
+    props:
+    {
+      as: 'fetch',
+      rel: 'preload',
+      href: '/page-data\\index\\page-data.json',
+      crossOrigin: 'use-credentials'
+    },
+    _owner: null
+  },
+  { // 17
+    type: 'link',
+    key: '/page-data\\index\\app-data.json',
+    ref: null,
+    props:
+    {
+      as: 'fetch',
+      rel: 'preload',
+      href: '/page-data\\index\\app-data.json',
+      crossOrigin: 'use-credentials'
+    },
+    _owner: null
   }
 ]
 
