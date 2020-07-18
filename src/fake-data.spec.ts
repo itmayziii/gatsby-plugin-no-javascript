@@ -174,6 +174,19 @@ export const headComponentsData = [
       crossOrigin: 'use-credentials'
     },
     _owner: null
+  },
+  { // 16
+    type: 'link',
+    key: '/page-data\\index\\page-data.json',
+    ref: null,
+    props:
+    {
+      as: 'fetch',
+      rel: 'preload',
+      href: '/page-data\\index\\page-data.json',
+      crossOrigin: 'use-credentials'
+    },
+    _owner: null
   }
 ]
 
