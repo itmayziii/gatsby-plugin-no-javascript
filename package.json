@@ -64,7 +64,7 @@
     "@types/react": "~16.9.4"
   },
   "peerDependencies": {
-    "gatsby": "^2.0.0"
+    "gatsby": "^2.0.0 || ^3.0.0"
   },
   "config": {
     "commitizen": {
