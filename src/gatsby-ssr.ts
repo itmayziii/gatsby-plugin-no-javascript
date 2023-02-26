@@ -94,6 +94,14 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptio
     if (postBodyComponent.props.id && (postBodyComponent.props.id === 'gatsby-script-loader' || postBodyComponent.props.id === 'gatsby-chunk-mapping')) {
       return false
     }
+    
+    // Remove the infamous "_gatsby-scripts", introduced in Gatsby 5.2.0
+    if (
+        postBodyComponent.props.sliceId &&
+        postBodyComponent.props.sliceId === "_gatsby-scripts"
+    ) {
+        return false
+    }
 
     return pageScripts.find((script): boolean => postBodyComponent.type === 'script' && `/${script.name}` === postBodyComponent.props.src) === undefined
   })
