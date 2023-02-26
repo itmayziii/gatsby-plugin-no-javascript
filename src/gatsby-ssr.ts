@@ -98,7 +98,7 @@ function getPostBodyComponentsNoJS (postBodyComponents: ReactNode[], pluginOptio
     // Remove the infamous "_gatsby-scripts", introduced in Gatsby 5.2.0
     if (
         postBodyComponent.props.sliceId &&
-        postBodyComponent.props.sliceId === "_gatsby-scripts"
+        postBodyComponent.props.sliceId === '_gatsby-scripts'
     ) {
         return false
     }
